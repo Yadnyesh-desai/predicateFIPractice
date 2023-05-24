@@ -28,4 +28,14 @@ class EmployeeTest {
     void getLastName() {
         assertEquals("Washington", john.getLastName());
     }
+    
+    @Test
+    void getAge() {
+        assertEquals(35,john.getAge());
+    }
+
+    @Test
+    void getSalary() {
+        assertEquals(30000,john.getSalary());
+    }
 }
