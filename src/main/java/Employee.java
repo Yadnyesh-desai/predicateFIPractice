@@ -63,7 +63,7 @@ public class Employee implements Comparable<Employee> {
 
     @Override
     public String toString() {
-        return "%-15d %-15s %-15s %-15d %.2f".formatted(id, firstName, lastName, age, salary);
+        return "%-15d %-15s %-15s %-15d %-15.2f %-15d".formatted(id, firstName, lastName, age, salary, this.hashCode());
     }
 
     public int getId() {
@@ -106,14 +106,19 @@ public class Employee implements Comparable<Employee> {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (!(o instanceof Employee))
+        if (!(obj instanceof Employee))
             return false;
         Employee e = (Employee) obj;
 
         return Objects.equals(this.id, e.id) &&
                 Objects.equals(this.firstName, e.firstName) &&
                 Objects.equals(this.lastName, e.lastName) &&
-                Objects.equals(this.age, e.salary) &&
+                Objects.equals(this.age, e.age) &&
                 Objects.equals(this.salary, e.salary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.firstName, this.lastName, this.age, this.salary);
     }
 }
