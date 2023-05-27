@@ -19,7 +19,7 @@ public class Main {
                 new Employee("Phoebe", "Buffay", 30, 14000),
                 new Employee("Rachel", "Green", 23, 23000)
         )));
-        Employee david = new Employee("David","Coulthard",27,70000);
+        Employee david = new Employee("David", "Coulthard", 27, 70000);
         Employee kevin = new Employee(david);   //  Creating an object from another object using Copy Constructor defined in the main.java.Employee class.
         System.out.println("All Employees:");
         employees.forEach(System.out::println);
@@ -129,6 +129,16 @@ public class Main {
         for (int i = 1; i < 32; i++)
             if (evenIntPredicate.test(i))
                 System.out.print(i + " ");
+        System.out.println();
+
+        Employee sachin = new Employee("Sachin", "Tendulkar", 30, 30000);
+        Employee virat = new Employee(sachin);
+        Employee yuvraj = new Employee("Yuvraj", "Singh", 28, 25000);
+        System.out.println("Sachin = Virat? " + sachin.equals(virat));
+        System.out.println("Sachin = Yuvraj? " + sachin.equals(yuvraj));
+        System.out.println("Sachin = " + sachin);
+        System.out.println("Virat = " + virat);
+        System.out.println("Yuvraj = " + yuvraj);
 
     }
 
