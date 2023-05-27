@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 enum SORTType {ID, FIRSTNAME, LASTNAME, AGE, SALARY}
 
@@ -62,7 +63,7 @@ public class Employee implements Comparable<Employee> {
 
     @Override
     public String toString() {
-        return "%-15d %-15s %-15s %-15d %.2f".formatted(id, firstName, lastName, age, salary);
+        return "%-15d %-15s %-15s %-15d %-15.2f %-15d".formatted(id, firstName, lastName, age, salary, this.hashCode());
     }
 
     public int getId() {
@@ -99,5 +100,25 @@ public class Employee implements Comparable<Employee> {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Employee))
+            return false;
+        Employee e = (Employee) obj;
+
+        return Objects.equals(this.id, e.id) &&
+                Objects.equals(this.firstName, e.firstName) &&
+                Objects.equals(this.lastName, e.lastName) &&
+                Objects.equals(this.age, e.age) &&
+                Objects.equals(this.salary, e.salary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.firstName, this.lastName, this.age, this.salary);
     }
 }
