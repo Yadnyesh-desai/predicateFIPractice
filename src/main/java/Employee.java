@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 enum SORTType {ID, FIRSTNAME, LASTNAME, AGE, SALARY}
 
@@ -99,5 +100,20 @@ public class Employee implements Comparable<Employee> {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(o instanceof Employee))
+            return false;
+        Employee e = (Employee) obj;
+
+        return Objects.equals(this.id, e.id) &&
+                Objects.equals(this.firstName, e.firstName) &&
+                Objects.equals(this.lastName, e.lastName) &&
+                Objects.equals(this.age, e.salary) &&
+                Objects.equals(this.salary, e.salary);
     }
 }
